@@ -1,3 +1,5 @@
+#include "primes.h"
+
 int prime_brute(int n) {
     if (n < 2) return 0;
     int primes = n - 1; // Assumes all numbers are prime (except 1)
