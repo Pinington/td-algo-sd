@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <time.h>
-#include "fibonacci.c"
+#include "fibonacci.c" // No .h headers as requested
 #include "primes.c"
 
 // Test cases because I don't want to use argv
