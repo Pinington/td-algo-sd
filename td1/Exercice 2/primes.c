@@ -16,11 +16,6 @@ int prime_brute(int n) {
 }
 
 
-/*  Answer to question 3: Here the complexity is nlog(log) because for each prime number we find, we loop 
-    through all it's multiples and set them as non-prime. For each prime p, there are n/p multiples in the
-    list, so in total we have n / 2 + n / 3 + ... = sum(n/p) for p < n. sum(1/p) for p < n is bound by 
-    log(log(n)), meaning sum(n/p) is bound by n*log(log(n)). That is why the complexity is O( nlog(log(n)) )*/
-
 // Could have been a long since O( n*log(log(n)) ) 
 int prime_dynamic(int n) {
     int primes_list[n + 1];
@@ -40,9 +35,15 @@ int prime_dynamic(int n) {
 
     // Count primes
     int total_primes = 0;
-    for(int i = 0; i < n + 1; i++) {
+    for(int i = 0; i < n + 1; i++) { 
+        // Could have decremented a counter like with brute, but counting makes code clearer and is only O(n)
         if (primes_list[i]) total_primes++; 
     }
 
     return total_primes;
 }
+
+/*  Answer to question 3: Here the complexity is nlog(log) because for each prime number we find, we loop 
+    through all it's multiples and set them as non-prime. For each prime p, there are n/p multiples in the
+    list, so in total we have n / 2 + n / 3 + ... = sum(n/p) for p < n. sum(1/p) for p < n is bound by 
+    log(log(n)), meaning sum(n/p) is bound by n*log(log(n)). That is why the complexity is O( nlog(log(n)) )*/
