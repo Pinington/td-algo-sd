@@ -11,7 +11,7 @@ long long int fibonacci_dynamic(int n) {
 
     long long int u0 = 1, u1 = 1;
     for (int i = 2; i < n + 1; i++) {
-        u1 = u1 + u0; // Un = Un-1 + Un-2
+        u1 = u0 + u1; // Un = Un-1 + Un-2
         u0 = u1 - u0; // Un-2 = Un-1
     }
 

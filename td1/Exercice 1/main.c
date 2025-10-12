@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <time.h>
 #include "fibonacci.h"
+#include "primes.h"
 
+// Test cases because I don't want to use argv
 #define N 40   // Fibonacci test case
+#define n 40000  // Primes test case 
 
 int main() {
     clock_t begin_one, begin_two;
