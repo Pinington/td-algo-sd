@@ -20,7 +20,7 @@ int main() {
     time_one = (double)(end_one -  begin_one) / CLOCKS_PER_SEC;
     time_two = (double)(end_two -  begin_two) / CLOCKS_PER_SEC;
 
-    printf("Fib recursive time: %lf seconds\n ~Result: %lli\nFib dynamic time: %lf seconds\n ~Result: %lli\n\n",
+    printf("Fib recursive time: %lf seconds\n ~Result: %lli\nFib dynamic time: %lf seconds\n ~Result: %lli\n",
          time_one, fib_one, time_two, fib_two);
 
     return 0;
