@@ -30,5 +30,6 @@ long long int fibonacci_matrix(int n) {
     // After diagonalizing and applying the formula
     double result = (pow(phi, n) - pow(psi, n)) / sqrt5;
 
-    return (long long)llround(result); // ChatGPT said it's one off after Fib(70) because of roudin in pow
+    return (long long)llround(result); // ChatGPT said it's one off after Fib(70) because of rouding in pow
 }
+
