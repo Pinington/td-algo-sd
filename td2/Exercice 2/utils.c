@@ -24,9 +24,12 @@ void copy_array(int *src, int *dst, int n)
     }
 }
 
-void print_array(int* arr, int n) {
+void arrays_equal(int* str, int* oth, int n) {
     for (int i = 0; i < n; i++) {
-        printf("%i ", arr[i]);
+        if (str[i] != oth[i]) {
+            printf("Invalid result\n");
+            return;
+        }
     }
-    printf("\n");
+    printf("Expected result\n");
 }

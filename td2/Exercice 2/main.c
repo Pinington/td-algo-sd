@@ -4,12 +4,53 @@
 #include "sort.h"
 #include "utils.h"
 
+#define MAX_SIZE 1000
+
 int main(void)
 {
     // Test case
-    int list[] = {1, 4, 2, -9, 0, -18, 23, 6};
-    int size = sizeof(list) / sizeof(list[0]);
+    int list[MAX_SIZE];
+    int expected[MAX_SIZE];
+    int size = 0;
+    int expected_size = 0;
 
+
+    // Lecture de input.txt
+    FILE *input = fopen("text/input.txt", "r");
+    if (!input) {
+        fprintf(stderr, "Erreur : impossible d'ouvrir input.txt\n");
+        return 1;
+    }
+
+    while (fscanf(input, "%d", &list[size]) == 1 && size < MAX_SIZE)
+        size++;
+    fclose(input);
+
+    if (size == 0) {
+        fprintf(stderr, "Erreur : fichier vide ou invalide.\n");
+        return 1;
+    }
+
+
+    // Lecture de exepected_output.exe
+    FILE *expected_file = fopen("text/expected_output.txt", "r");
+    if (!expected_file) {
+        fprintf(stderr, "Erreur : impossible d'ouvrir expected_output.txt\n");
+        return 1;
+    }
+
+    while (fscanf(expected_file, "%d", &expected[expected_size]) == 1 && expected_size < MAX_SIZE)
+        expected_size++;
+    fclose(expected_file);
+
+    if (expected_size != size) {
+        fprintf(stderr, "Erreur : tailles différentes entre input.txt (%d) et expected_output.txt (%d)\n",
+                size, expected_size);
+        return 1;
+    }
+
+
+    // Debut des tests
     clock_t begin, end;
     double time;
 
@@ -23,7 +64,8 @@ int main(void)
     time = (double) (end - begin) / CLOCKS_PER_SEC;
 
     printf("Selection sort time: %lf seconds\n ~Result: ", time);
-    print_array(list_selection, size);
+    arrays_equal(list_selection, expected, size);
+
 
     // Insertion sort
     int list_insertion[size];
@@ -35,7 +77,8 @@ int main(void)
     time = (double) (end - begin) / CLOCKS_PER_SEC;
 
     printf("Insertion sort time: %lf seconds\n ~Result: ", time);
-    print_array(list_insertion, size);
+    arrays_equal(list_insertion, expected, size);
+
 
     // Bubble sort
     int list_bubble[size];
@@ -47,7 +90,8 @@ int main(void)
     time = (double) (end - begin) / CLOCKS_PER_SEC;
 
     printf("Bubble sort time: %lf seconds\n ~Result: ", time);
-    print_array(list_bubble, size);
+    arrays_equal(list_bubble, expected, size);
+
 
     // Merge sort
     int list_merge[size];
@@ -59,7 +103,8 @@ int main(void)
     time = (double) (end - begin) / CLOCKS_PER_SEC;
 
     printf("Merge sort time: %lf seconds\n ~Result: ", time);
-    print_array(list_merge, size);
+    arrays_equal(list_merge, expected, size);
+
 
     // Quick sort
     int list_quick[size];
@@ -71,7 +116,7 @@ int main(void)
     time = (double) (end - begin) / CLOCKS_PER_SEC;
 
     printf("Quick sort time: %lf seconds\n ~Result: ", time);
-    print_array(list_quick, size);
+    arrays_equal(list_quick, expected, size);
 
     return 0;
 }
