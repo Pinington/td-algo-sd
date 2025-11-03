@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "string.h": "c",
-        "avl_bst.h": "c"
-    }
-}
