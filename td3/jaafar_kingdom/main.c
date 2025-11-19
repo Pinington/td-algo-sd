@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-// test
+
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define INF 4096
 
