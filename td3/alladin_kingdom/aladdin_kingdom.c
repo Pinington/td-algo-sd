@@ -72,8 +72,8 @@ int KingdomCounter(struct Graph* graph) {
 
 //Task 2
 int Graph_BFS_distance(struct Graph* g, int A, int B, int N) {
-    bool visited[N];
-    int queue[N];
+    bool* visited = malloc(N * sizeof(bool));
+    int* queue = malloc(N * sizeof(int));
     int front = 0, rear = 0;
     int distance = 0;
 
